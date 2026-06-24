@@ -1,381 +1,71 @@
-[23-06-2026 18:49] Unas: <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OTT Updates India</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    background:#0f0f0f;
-    color:#fff;
-}
-
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    background:rgba(0,0,0,0.9);
-    backdrop-filter:blur(10px);
-    z-index:1000;
-}
-
-.navbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 8%;
-}
-
-.logo{
-    color:#ff0033;
-    font-size:28px;
-    font-weight:700;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:white;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:#ff0033;
-}
-
-.search-box{
-    padding:10px 15px;
-    border:none;
-    border-radius:25px;
-    outline:none;
-}
-
-.hero{
-    height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
-    url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    padding:0 8%;
-}
-
-.hero-content{
-    max-width:700px;
-}
-
-.hero-content h1{
-    font-size:60px;
-    margin-bottom:15px;
-}
-
-.hero-content p{
-    color:#ddd;
-    line-height:1.7;
-    margin-bottom:25px;
-}
-
-.btn{
-    display:inline-block;
-    background:#ff0033;
-    color:#fff;
-    padding:14px 30px;
-    text-decoration:none;
-    border-radius:30px;
-}
-
-.section{
-    padding:80px 8%;
-}
-
-.section-title{
-    font-size:32px;
-    margin-bottom:30px;
-    border-left:5px solid #ff0033;
-    padding-left:15px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:#1b1b1b;
-    border-radius:15px;
-    overflow:hidden;
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.card img{
-    width:100%;
-    height:350px;
-    object-fit:cover;
-}
-
-.card-content{
-    padding:18px;
-}
-
-.platform{
-    color:#ff0033;
-    font-size:14px;
-    margin-bottom:8px;
-}
-
-.release-date{
-    color:#bbb;
-    font-size:14px;
-}
-
-.news-box{
-    background:#1b1b1b;
-    padding:25px;
-    border-radius:15px;
-}
-
-.news-item{
-    padding:15px 0;
-    border-bottom:1px solid #333;
-}
-
-.calendar{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:#1b1b1b;
-}
-
-th,td{
-    padding:15px;
-    text-align:left;
-    border-bottom:1px solid #333;
-}
-
-th{
-    background:#ff0033;
-}
-
-footer{
-    background:#000;
-    text-align:center;
-    padding:30px;
-    color:#aaa;
-}
-
-@media(max-width:768px){
-
-.hero-content h1{
-    font-size:38px;
-}
-
-.nav-links{
-    display:none;
-}
-
-.search-box{
-    width:120px;
-}
-}
-</style>
-</head>
-<body>
-
-<header>
-<div class="navbar">
-<div class="logo">OTT UPDATES INDIA</div>
-
-<div class="nav-links">
-<a href="#">Home</a>
-<a href="#">Movies</a>
-<a href="#">Web Series</a>
-<a href="#">OTT News</a>
-<a href="#">Release Calendar</a>
-</div>
-
-<input type="text" class="search-box" placeholder="Search...">
-</div>
-</header>
-
-<section class="hero">
-<div class="hero-content">
-<h1>Latest OTT Releases in India</h1>
-<p>
-Get daily updates on Netflix, Prime Video, JioHotstar, Sony LIV, ZEE5,
-Malayalam, Tamil, Telugu, Hindi and English OTT releases.
-</p>
-
-<a href="#" class="btn">Explore Releases</a>
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">Trending Releases</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="https://via.placeholder.com/400x600" alt="">
-<div class="card-content">
-<div class="platform">Netflix</div>
-<h3>Movie Title</h3>
-<p class="release-date">Streaming Now</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x600" alt="">
-<div class="card-content">
-<div class="platform">Prime Video</div>
-<h3>Web Series</h3>
-<p class="release-date">June 2026</p>
-</div>
-</div>
-[23-06-2026 18:49] Unas: <div class="card">
-<img src="https://via.placeholder.com/400x600" alt="">
-<div class="card-content">
-<div class="platform">JioHotstar</div>
-<h3>Malayalam Movie</h3>
-<p class="release-date">Coming Soon</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x600" alt="">
-<div class="card-content">
-<div class="platform">Sony LIV</div>
-<h3>Thriller Series</h3>
-<p class="release-date">July 2026</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">OTT Release Calendar</h2>
-
-<div class="calendar">
-<table>
-<tr>
-<th>Date</th>
-<th>Title</th>
-<th>Platform</th>
-<th>Language</th>
-</tr>
-
-<tr>
-<td>25 June 2026</td>
-<td>Movie Name</td>
-<td>Netflix</td>
-<td>Hindi</td>
-</tr>
-
-<tr>
-<td>28 June 2026</td>
-<td>Web Series</td>
-<td>Prime Video</td>
-<td>English</td>
-</tr>
-
-<tr>
-<td>01 July 2026</td>
-<td>Malayalam Thriller</td>
-<td>JioHotstar</td>
-<td>Malayalam</td>
-</tr>
-
-</table>
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">Latest OTT News</h2>
-
-<div class="news-box">
-
-<div class="news-item">
-🔥 Netflix India announces new blockbuster acquisition.
-</div>
-
-<div class="news-item">
-🎬 Major Malayalam movie gets OTT release date.
-</div>
-
-<div class="news-item">
-📺 Prime Video reveals July release lineup.
-</div>
-
-<div class="news-item">
-⭐ JioHotstar launches exclusive original series.
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2 class="section-title">OTT Platforms</h2>
-
-<div class="grid">
-
-<div class="card">
-<div class="card-content">
-<h3>Netflix</h3>
-<p>Latest Netflix India releases.</p>
-</div>
-</div>
-
-<div class="card">
-<div class="card-content">
-<h3>Prime Video</h3>
-<p>Movies and web series updates.</p>
-</div>
-</div>
-
-<div class="card">
-<div class="card-content">
-<h3>JioHotstar</h3>
-<p>Indian OTT exclusive releases.</p>
-</div>
-</div>
-
-<div class="card">
-<div class="card-content">
-<h3>Sony LIV</h3>
-<p>Sports and entertainment releases.</p>
-</div>
-</div>
-
-</div>
-</section>
-
-<footer>
-© 2026 OTT Updates India | Latest OTT Release Dates, News & Reviews
-</footer>
-
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  <title>OTT MOVIE UPDATEZ: LATEST OTT Releases  | Episode Wise Ratings & Reviews</title>
+  <meta name="description" content="Ott movie updatez, providing episode-wise ratings and critic reviews for movies and web series globally." />
+  <!-- Open Graph SEO Metatags -->
+  <meta property="og:title" content="OTT MOVIE UPDATEZ: LATEST OTT UPDATEZ | Episode Wise Ratings & Reviews" />
+  <meta property="og:description" content="Ott movie updatez, providing episode-wise ratings and critic reviews for movies and web series globally." />
+  <meta property="og:image" content="https://1drv.ms/f/c/9330581ff48a55d4/IgDWwFPTKKfZRaJ2KoKF0u2wAVkpty5jue7LFnXIOEb624s?e=JthAnU" />
+  <meta property="og:type" content="website" /
+  <meta property="og:url" content="ttps://filmentertainment451-ctrl.github.io/OTT-MOVIE-UPDATEZZ/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:name" content="OTT MOVIE UPDATEZ: LATEST OTT UPDATEZ | Episode Wise Ratings & Reviews" />
+  <meta name="twitter:description" content="Ott movie updatez, providing episode-wise ratings and critic reviews for movies and web series globally." />
+  <meta name="twitter:image" content="https://1drv.ms/f/c/9330581ff48a55d4/IgDWwFPTKKfZRaJ2KoKF0u2wAVkpty5jue7LFnXIOEb624s?e=JthAnU" />
+      
+    <link rel="icon" type="image/png" href="https://1drv.ms/f/c/9330581ff48a55d4/IgDWwFPTKKfZRaJ2KoKF0u2wAVkpty5jue7LFnXIOEb624s?e=JthAnU" />
+  </head>
+  <body>
+    <div id="root">
+      <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #020617;
+        }
+        .initial-loader {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+          background: #020617;
+          color: white;
+          font-family: sans-serif;
+        }
+        .spinner {
+          width: 40px;
+          height: 40px;
+          border: 4px solid rgba(255,255,255,0.1);
+          border-left-color: #6366f1;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+          margin-bottom: 20px;
+        }
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+      <div class="initial-loader">
+        <div class="spinner"></div>
+        <div style="font-weight: 900; letter-spacing: 0.1em; font-size: 10px; text-transform: uppercase; opacity: 0.5;">Streamingdue Index Loading...</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx?t=1782042758693"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"542cb7c207584b5ba3eaf8998cccd60e","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
