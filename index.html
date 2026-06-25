@@ -345,6 +345,45 @@
             transform: translateY(-1px);
         }
 
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .admin-tab-btn {
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #b0b0b0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .admin-tab-btn.active {
+            background: #e50914;
+            color: white;
+            border-color: #e50914;
+        }
+
+        .admin-tab-btn:hover {
+            background: rgba(229, 9, 20, 0.2);
+            border-color: #e50914;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
         .upload-form label {
             color: #d0d0d0;
             font-weight: 600;
@@ -765,13 +804,13 @@
             <h2 class="section-title">Upload Movie Trailer</h2>
             <p class="announcement-text">Add a trailer link to your OTT updates feed and share the latest preview instantly.</p>
         </div>
-        <div class="upload-grid">
-            <div class="admin-access">
-                <input id="adminCode" type="password" placeholder="Enter admin passcode">
-                <button type="button" id="adminLoginBtn" onclick="adminLogin()">Unlock Upload</button>
-                <button type="button" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;">Logout</button>
-                <span id="adminStatus" class="admin-status">Admin access required for uploads.</span>
-            </div>
+        <div class="admin-access">
+            <input id="adminCode" type="password" placeholder="Enter admin passcode">
+            <button type="button" id="adminLoginBtn" onclick="adminLogin()">Unlock Upload</button>
+            <button type="button" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;">Logout</button>
+            <span id="adminStatus" class="admin-status">Admin access required for uploads.</span>
+        </div>
+        <div class="upload-grid" id="uploadGrid" style="display:none;">
             <div class="admin-settings" id="adminSettings">
                 <input id="newAdminCode" type="password" placeholder="New admin passcode">
                 <button type="button" onclick="changeAdminPassword()">Save New Passcode</button>
@@ -992,20 +1031,7 @@
                     icon: ""
                 }
             ],
-            trailers: [
-                {
-                    title: "Stranger Things Season 5 Trailer",
-                    platform: "Netflix",
-                    url: "https://www.youtube.com/watch?v=NC0D8F0fCn0",
-                    date: "2026-07-01"
-                },
-                {
-                    title: "Dune: Part Three Trailer",
-                    platform: "Amazon Prime",
-                    url: "https://www.youtube.com/watch?v=abcdefghijk",
-                    date: "2026-07-05"
-                }
-            ]
+            trailers: []
         };
 
         let adminPassword = "ottadmin";
@@ -1014,6 +1040,7 @@
         function adminLogin() {
             const code = document.getElementById('adminCode').value.trim();
             const status = document.getElementById('adminStatus');
+            const uploadGrid = document.getElementById('uploadGrid');
             const uploadFieldset = document.getElementById('uploadFieldset');
             const loginButton = document.getElementById('adminLoginBtn');
             const logoutButton = document.getElementById('adminLogoutBtn');
@@ -1021,6 +1048,7 @@
 
             if (code === adminPassword) {
                 isAdmin = true;
+                uploadGrid.style.display = 'grid';
                 uploadFieldset.disabled = false;
                 document.getElementById('adminCode').disabled = true;
                 loginButton.disabled = true;
@@ -1036,6 +1064,7 @@
 
         function adminLogout() {
             isAdmin = false;
+            const uploadGrid = document.getElementById('uploadGrid');
             const uploadFieldset = document.getElementById('uploadFieldset');
             const loginButton = document.getElementById('adminLoginBtn');
             const logoutButton = document.getElementById('adminLogoutBtn');
@@ -1044,6 +1073,7 @@
             const adminCode = document.getElementById('adminCode');
             const settingsStatus = document.getElementById('adminSettingsStatus');
 
+            uploadGrid.style.display = 'none';
             uploadFieldset.disabled = true;
             loginButton.disabled = false;
             logoutButton.style.display = 'none';
