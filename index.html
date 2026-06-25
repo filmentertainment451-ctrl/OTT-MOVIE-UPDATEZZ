@@ -799,60 +799,6 @@
         </div>
     </nav>
 
-    <section class="upload-panel">
-        <div class="upload-header">
-            <h2 class="section-title">Upload Movie Trailer</h2>
-            <p class="announcement-text">Add a trailer link to your OTT updates feed and share the latest preview instantly.</p>
-        </div>
-        <div class="admin-access">
-            <input id="adminCode" type="password" placeholder="Enter admin passcode">
-            <button type="button" id="adminLoginBtn" onclick="adminLogin()">Unlock Upload</button>
-            <button type="button" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;">Logout</button>
-            <span id="adminStatus" class="admin-status">Admin access required for uploads.</span>
-        </div>
-        <div class="upload-grid" id="uploadGrid" style="display:none;">
-            <div class="admin-settings" id="adminSettings">
-                <input id="newAdminCode" type="password" placeholder="New admin passcode">
-                <button type="button" onclick="changeAdminPassword()">Save New Passcode</button>
-                <span id="adminSettingsStatus" class="admin-status">Set a new admin passcode after login.</span>
-            </div>
-            <form id="trailerForm" class="upload-form" onsubmit="addTrailer(event)">
-                <fieldset id="uploadFieldset" disabled>
-                    <label for="trailerTitle">Movie / Show Title</label>
-                    <input id="trailerTitle" type="text" placeholder="Enter title" required>
-
-                    <label for="trailerPlatform">Platform</label>
-                    <select id="trailerPlatform" required>
-                        <option value="Netflix">Netflix</option>
-                        <option value="Amazon Prime">Amazon Prime</option>
-                        <option value="Sony Liv">Sony Liv</option>
-                        <option value="Zee5">Zee5</option>
-                        <option value="SainPlay">SainPlay</option>
-                        <option value="ManoramaMax">ManoramaMax</option>
-                        <option value="SunNxt">SunNxt</option>
-                        <option value="JioHostar">JioHostar</option>
-                    </select>
-
-                    <label for="trailerUrl">Trailer URL</label>
-                    <input id="trailerUrl" type="url" placeholder="Paste YouTube or Vimeo link" required>
-
-                    <label for="trailerDate">Release Date</label>
-                    <input id="trailerDate" type="date" required>
-
-                    <button type="submit">Upload Trailer</button>
-                    <p id="uploadMessage" class="upload-message"></p>
-                </fieldset>
-            </form>
-            <div class="upload-hint">
-                <h3>How it works</h3>
-                <p>Paste a YouTube or Vimeo trailer link, choose the platform, and set the release date. The trailer preview will appear below.</p>
-            </div>
-        </div>
-        <div class="content-grid" id="trailerGrid">
-            <!-- Trailer cards will appear here -->
-        </div>
-    </section>
-
     <div class="container">
         <!-- New Releases Section -->
         <h2 class="section-title">New Releases</h2>
@@ -873,368 +819,60 @@
 
     <script>
         const content = {
-            newReleases: [
+newReleases: [
                 {
-                    title: "Stranger Things Season 5",
+                    title: "Blast",
                     platform: "Netflix",
-                    type: "Series",
-                    date: "2026-07-01",
+                    type: "Movie",
+                    date: "2026-06-25",
                     icon: ""
                 },
                 {
-                    title: "Dune: Part Three",
+                    title: "Drishyam 3",
                     platform: "Amazon Prime",
                     type: "Movie",
-                    date: "2026-07-05",
+                    date: "2026-06-26",
                     icon: ""
                 },
                 {
-                    title: "The Crown Season 7",
-                    platform: "Netflix",
-                    type: "Series",
-                    date: "2026-06-28",
-                    icon: ""
-                },
-                {
-                    title: "Avatar: Fire Nation",
-                    platform: "Netflix",
-                    type: "Movie",
-                    date: "2026-07-10",
-                    icon: ""
-                },
-                {
-                    title: "Sacred Games Season 3",
-                    platform: "Netflix",
-                    type: "Series",
-                    date: "2026-07-02",
-                    icon: ""
-                },
-                {
-                    title: "Scam 2026",
+                    title: "Athiradi",
                     platform: "Sony Liv",
-                    type: "Series",
-                    date: "2026-06-30",
+                    type: "Movie",
+                    date: "2026-06-19",
                     icon: ""
                 },
                 {
-                    title: "The Diplomat Season 2",
-                    platform: "Netflix",
-                    type: "Series",
-                    date: "2026-07-08",
+                    title: "Avatar: Fire and Ash ",
+                    platform: "jiohostar",
+                    type: "Movie",
+                    date: "2026-06-24",
                     icon: ""
                 },
                 {
-                    title: "Andor Season 2",
-                    platform: "Amazon Prime",
-                    type: "Series",
-                    date: "2026-07-15",
-                    icon: ""
-                },
-                {
-                    title: "Kalki 2898",
+                    title: "KD:The devil",
                     platform: "Zee5",
                     type: "Movie",
-                    date: "2026-07-20",
+                    date: "2026-06-05",
                     icon: ""
                 },
                 {
-                    title: "Maharaj",
-                    platform: "Amazon Prime",
-                    type: "Movie",
-                    date: "2026-07-12",
+                    title: "Cup :Love All Play",
+                    platform: "ManoramaMax",
+                    type: "movie",
+                    date: "2026-06-25",
                     icon: ""
                 },
                 {
-                    title: "Mirzapur Season 4",
-                    platform: "Amazon Prime",
-                    type: "Series",
-                    date: "2026-07-25",
+                    title: "Revolver Rinko",
+                    platform: "SunNxt",
+                    type: "movie",
+                    date: "2026-06-26",
                     icon: ""
                 },
                 {
-                    title: "Game of Thrones: Legacy",
-                    platform: "Netflix",
-                    type: "Series",
-                    date: "2026-08-01",
-                    icon: ""
-                }
-            ],
-            comingSoon: [
-                {
-                    title: "Avengers: The Final Battle",
-                    platform: "Netflix",
-                    type: "Movie",
-                    date: "2026-08-15",
+                    title: "Kunddala Puranam",
+                    platform: "Saina Play",
+                    type: "movie",
+                    date: "2026-06-26",
                     icon: ""
                 },
-                {
-                    title: "The Witcher Season 4",
-                    platform: "Netflix",
-                    type: "Series",
-                    date: "2026-09-01",
-                    icon: ""
-                },
-                {
-                    title: "Bollywood Blockbuster 2026",
-                    platform: "Amazon Prime",
-                    type: "Movie",
-                    date: "2026-08-22",
-                    icon: ""
-                },
-                {
-                    title: "Shark Tank India Season 4",
-                    platform: "Sony Liv",
-                    type: "Series",
-                    date: "2026-08-10",
-                    icon: ""
-                },
-                {
-                    title: "Eternal",
-                    platform: "Zee5",
-                    type: "Movie",
-                    date: "2026-09-15",
-                    icon: ""
-                },
-                {
-                    title: "The Morning Show Season 4",
-                    platform: "Amazon Prime",
-                    type: "Series",
-                    date: "2026-10-01",
-                    icon: ""
-                },
-                {
-                    title: "Bade Miyan Chote Miyan 2",
-                    platform: "Amazon Prime",
-                    type: "Movie",
-                    date: "2026-09-20",
-                    icon: ""
-                },
-                {
-                    title: "Ghoul Season 2",
-                    platform: "Netflix",
-                    type: "Series",
-                    date: "2026-10-15",
-                    icon: ""
-                },
-                {
-                    title: "SainPlay Original Series",
-                    platform: "SainPlay",
-                    type: "Series",
-                    date: "2026-08-25",
-                    icon: ""
-                },
-                {
-                    title: "JioHostar Blockbuster",
-                    platform: "JioHostar",
-                    type: "Movie",
-                    date: "2026-09-30",
-                    icon: ""
-                }
-            ],
-            trailers: []
-        };
-
-        let adminPassword = "ottadmin";
-        let isAdmin = false;
-
-        function adminLogin() {
-            const code = document.getElementById('adminCode').value.trim();
-            const status = document.getElementById('adminStatus');
-            const uploadGrid = document.getElementById('uploadGrid');
-            const uploadFieldset = document.getElementById('uploadFieldset');
-            const loginButton = document.getElementById('adminLoginBtn');
-            const logoutButton = document.getElementById('adminLogoutBtn');
-            const adminSettings = document.getElementById('adminSettings');
-
-            if (code === adminPassword) {
-                isAdmin = true;
-                uploadGrid.style.display = 'grid';
-                uploadFieldset.disabled = false;
-                document.getElementById('adminCode').disabled = true;
-                loginButton.disabled = true;
-                logoutButton.style.display = 'inline-block';
-                adminSettings.style.display = 'flex';
-                status.textContent = 'Admin access granted. Upload enabled.';
-                status.style.color = '#7cff7c';
-            } else {
-                status.textContent = 'Invalid admin passcode.';
-                status.style.color = '#ff6666';
-            }
-        }
-
-        function adminLogout() {
-            isAdmin = false;
-            const uploadGrid = document.getElementById('uploadGrid');
-            const uploadFieldset = document.getElementById('uploadFieldset');
-            const loginButton = document.getElementById('adminLoginBtn');
-            const logoutButton = document.getElementById('adminLogoutBtn');
-            const adminSettings = document.getElementById('adminSettings');
-            const status = document.getElementById('adminStatus');
-            const adminCode = document.getElementById('adminCode');
-            const settingsStatus = document.getElementById('adminSettingsStatus');
-
-            uploadGrid.style.display = 'none';
-            uploadFieldset.disabled = true;
-            loginButton.disabled = false;
-            logoutButton.style.display = 'none';
-            adminSettings.style.display = 'none';
-            adminCode.disabled = false;
-            adminCode.value = '';
-            status.textContent = 'Admin session ended.';
-            status.style.color = '#ffcc00';
-            settingsStatus.textContent = 'Set a new admin passcode after login.';
-            settingsStatus.style.color = '#ffcc00';
-        }
-
-        function changeAdminPassword() {
-            if (!isAdmin) return;
-
-            const newCode = document.getElementById('newAdminCode').value.trim();
-            const settingsStatus = document.getElementById('adminSettingsStatus');
-
-            if (!newCode) {
-                settingsStatus.textContent = 'Enter a new admin passcode to save.';
-                settingsStatus.style.color = '#ff6666';
-                return;
-            }
-
-            adminPassword = newCode;
-            document.getElementById('newAdminCode').value = '';
-            settingsStatus.textContent = 'Admin passcode updated successfully.';
-            settingsStatus.style.color = '#7cff7c';
-        }
-
-        function createCard(item, isComing = false) {
-            const dateObj = new Date(item.date);
-            const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                month: 'short', 
-                day: 'numeric',
-                year: 'numeric'
-            });
-
-            const platformSlug = item.platform.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9_-]/g, '');
-
-            return `
-                <div class="card" data-platform="${item.platform}">
-                    <div class="card-image">
-                        ${item.icon}
-                        <span class="platform-badge platform-${platformSlug}">${item.platform}</span>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-title">${item.title}</div>
-                        <span class="card-type">${item.type}</span>
-                        <div class="card-info">
-                            <span>Release Date:</span>
-                            <span class="card-date">${formattedDate}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderCards() {
-            const newReleasesGrid = document.getElementById('newReleasesGrid');
-            const comingSoonGrid = document.getElementById('comingSoonGrid');
-
-            newReleasesGrid.innerHTML = content.newReleases
-                .map(item => createCard(item, false))
-                .join('');
-
-            comingSoonGrid.innerHTML = content.comingSoon
-                .map(item => createCard(item, true))
-                .join('');
-
-            renderTrailers();
-        }
-
-        function createTrailerCard(item) {
-            const dateObj = new Date(item.date);
-            const formattedDate = dateObj.toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-            });
-            const embedUrl = getVideoEmbedUrl(item.url);
-
-            return `
-                <div class="trailer-card">
-                    <div class="trailer-card-content">
-                        <div class="trailer-card-title">${item.title}</div>
-                        <div class="trailer-card-meta">
-                            <span>${item.platform}</span>
-                            <span>${formattedDate}</span>
-                        </div>
-                        <a class="video-link" href="${item.url}" target="_blank" rel="noreferrer">Watch trailer on source</a>
-                    </div>
-                    <iframe class="trailer-video" src="${embedUrl}" allowfullscreen loading="lazy"></iframe>
-                </div>
-            `;
-        }
-
-        function getVideoEmbedUrl(url) {
-            const youtubeMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-            if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
-            const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-            if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
-            return url;
-        }
-
-        function renderTrailers() {
-            const trailerGrid = document.getElementById('trailerGrid');
-            trailerGrid.innerHTML = content.trailers
-                .map(item => createTrailerCard(item))
-                .join('');
-        }
-
-        function addTrailer(event) {
-            event.preventDefault();
-            const message = document.getElementById('uploadMessage');
-
-            if (!isAdmin) {
-                message.textContent = 'Admin access required to upload trailers.';
-                message.style.color = '#ff6666';
-                return;
-            }
-
-            const title = document.getElementById('trailerTitle').value.trim();
-            const platform = document.getElementById('trailerPlatform').value;
-            const url = document.getElementById('trailerUrl').value.trim();
-            const date = document.getElementById('trailerDate').value;
-
-            if (!title || !url || !date) {
-                message.textContent = 'Please complete all fields.';
-                message.style.color = '#ff6666';
-                return;
-            }
-
-            content.trailers.unshift({ title, platform, url, date });
-            message.textContent = 'Trailer uploaded successfully!';
-            message.style.color = '#7cff7c';
-            document.getElementById('trailerForm').reset();
-            renderTrailers();
-        }
-
-        /* Announcement updater removed because announcement panel was deleted */
-
-        function filterPlatform(event, platform) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            if (event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            }
-
-            document.querySelectorAll('.card').forEach(card => {
-                if (platform === 'all' || card.dataset.platform === platform) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Initialize
-        renderCards();
-    </script>
-</body>
-</html>
