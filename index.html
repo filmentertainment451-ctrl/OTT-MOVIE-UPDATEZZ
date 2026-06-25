@@ -258,6 +258,93 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        .admin-access {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+        }
+
+        .admin-access input {
+            flex: 1 1 240px;
+            min-width: 220px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            outline: none;
+        }
+
+        .admin-access button {
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: none;
+            background: #e50914;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .admin-access button:hover {
+            background: #ff001b;
+            transform: translateY(-1px);
+        }
+
+        .admin-status {
+            color: #ffcc00;
+            font-weight: 600;
+            min-width: 220px;
+        }
+
+        .admin-settings {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            display: none;
+        }
+
+        .admin-settings input {
+            flex: 1 1 240px;
+            min-width: 220px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            outline: none;
+        }
+
+        .admin-settings button {
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: none;
+            background: #e50914;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .admin-settings button:hover {
+            background: #ff001b;
+            transform: translateY(-1px);
+        }
+
         .upload-form label {
             color: #d0d0d0;
             font-weight: 600;
@@ -679,30 +766,43 @@
             <p class="announcement-text">Add a trailer link to your OTT updates feed and share the latest preview instantly.</p>
         </div>
         <div class="upload-grid">
+            <div class="admin-access">
+                <input id="adminCode" type="password" placeholder="Enter admin passcode">
+                <button type="button" id="adminLoginBtn" onclick="adminLogin()">Unlock Upload</button>
+                <button type="button" id="adminLogoutBtn" onclick="adminLogout()" style="display:none;">Logout</button>
+                <span id="adminStatus" class="admin-status">Admin access required for uploads.</span>
+            </div>
+            <div class="admin-settings" id="adminSettings">
+                <input id="newAdminCode" type="password" placeholder="New admin passcode">
+                <button type="button" onclick="changeAdminPassword()">Save New Passcode</button>
+                <span id="adminSettingsStatus" class="admin-status">Set a new admin passcode after login.</span>
+            </div>
             <form id="trailerForm" class="upload-form" onsubmit="addTrailer(event)">
-                <label for="trailerTitle">Movie / Show Title</label>
-                <input id="trailerTitle" type="text" placeholder="Enter title" required>
+                <fieldset id="uploadFieldset" disabled>
+                    <label for="trailerTitle">Movie / Show Title</label>
+                    <input id="trailerTitle" type="text" placeholder="Enter title" required>
 
-                <label for="trailerPlatform">Platform</label>
-                <select id="trailerPlatform" required>
-                    <option value="Netflix">Netflix</option>
-                    <option value="Amazon Prime">Amazon Prime</option>
-                    <option value="Sony Liv">Sony Liv</option>
-                    <option value="Zee5">Zee5</option>
-                    <option value="SainPlay">SainPlay</option>
-                    <option value="ManoramaMax">ManoramaMax</option>
-                    <option value="SunNxt">SunNxt</option>
-                    <option value="JioHostar">JioHostar</option>
-                </select>
+                    <label for="trailerPlatform">Platform</label>
+                    <select id="trailerPlatform" required>
+                        <option value="Netflix">Netflix</option>
+                        <option value="Amazon Prime">Amazon Prime</option>
+                        <option value="Sony Liv">Sony Liv</option>
+                        <option value="Zee5">Zee5</option>
+                        <option value="SainPlay">SainPlay</option>
+                        <option value="ManoramaMax">ManoramaMax</option>
+                        <option value="SunNxt">SunNxt</option>
+                        <option value="JioHostar">JioHostar</option>
+                    </select>
 
-                <label for="trailerUrl">Trailer URL</label>
-                <input id="trailerUrl" type="url" placeholder="Paste YouTube or Vimeo link" required>
+                    <label for="trailerUrl">Trailer URL</label>
+                    <input id="trailerUrl" type="url" placeholder="Paste YouTube or Vimeo link" required>
 
-                <label for="trailerDate">Release Date</label>
-                <input id="trailerDate" type="date" required>
+                    <label for="trailerDate">Release Date</label>
+                    <input id="trailerDate" type="date" required>
 
-                <button type="submit">Upload Trailer</button>
-                <p id="uploadMessage" class="upload-message"></p>
+                    <button type="submit">Upload Trailer</button>
+                    <p id="uploadMessage" class="upload-message"></p>
+                </fieldset>
             </form>
             <div class="upload-hint">
                 <h3>How it works</h3>
@@ -908,6 +1008,72 @@
             ]
         };
 
+        let adminPassword = "ottadmin";
+        let isAdmin = false;
+
+        function adminLogin() {
+            const code = document.getElementById('adminCode').value.trim();
+            const status = document.getElementById('adminStatus');
+            const uploadFieldset = document.getElementById('uploadFieldset');
+            const loginButton = document.getElementById('adminLoginBtn');
+            const logoutButton = document.getElementById('adminLogoutBtn');
+            const adminSettings = document.getElementById('adminSettings');
+
+            if (code === adminPassword) {
+                isAdmin = true;
+                uploadFieldset.disabled = false;
+                document.getElementById('adminCode').disabled = true;
+                loginButton.disabled = true;
+                logoutButton.style.display = 'inline-block';
+                adminSettings.style.display = 'flex';
+                status.textContent = 'Admin access granted. Upload enabled.';
+                status.style.color = '#7cff7c';
+            } else {
+                status.textContent = 'Invalid admin passcode.';
+                status.style.color = '#ff6666';
+            }
+        }
+
+        function adminLogout() {
+            isAdmin = false;
+            const uploadFieldset = document.getElementById('uploadFieldset');
+            const loginButton = document.getElementById('adminLoginBtn');
+            const logoutButton = document.getElementById('adminLogoutBtn');
+            const adminSettings = document.getElementById('adminSettings');
+            const status = document.getElementById('adminStatus');
+            const adminCode = document.getElementById('adminCode');
+            const settingsStatus = document.getElementById('adminSettingsStatus');
+
+            uploadFieldset.disabled = true;
+            loginButton.disabled = false;
+            logoutButton.style.display = 'none';
+            adminSettings.style.display = 'none';
+            adminCode.disabled = false;
+            adminCode.value = '';
+            status.textContent = 'Admin session ended.';
+            status.style.color = '#ffcc00';
+            settingsStatus.textContent = 'Set a new admin passcode after login.';
+            settingsStatus.style.color = '#ffcc00';
+        }
+
+        function changeAdminPassword() {
+            if (!isAdmin) return;
+
+            const newCode = document.getElementById('newAdminCode').value.trim();
+            const settingsStatus = document.getElementById('adminSettingsStatus');
+
+            if (!newCode) {
+                settingsStatus.textContent = 'Enter a new admin passcode to save.';
+                settingsStatus.style.color = '#ff6666';
+                return;
+            }
+
+            adminPassword = newCode;
+            document.getElementById('newAdminCode').value = '';
+            settingsStatus.textContent = 'Admin passcode updated successfully.';
+            settingsStatus.style.color = '#7cff7c';
+        }
+
         function createCard(item, isComing = false) {
             const dateObj = new Date(item.date);
             const formattedDate = dateObj.toLocaleDateString('en-US', { 
@@ -992,19 +1158,28 @@
 
         function addTrailer(event) {
             event.preventDefault();
+            const message = document.getElementById('uploadMessage');
+
+            if (!isAdmin) {
+                message.textContent = 'Admin access required to upload trailers.';
+                message.style.color = '#ff6666';
+                return;
+            }
+
             const title = document.getElementById('trailerTitle').value.trim();
             const platform = document.getElementById('trailerPlatform').value;
             const url = document.getElementById('trailerUrl').value.trim();
             const date = document.getElementById('trailerDate').value;
-            const message = document.getElementById('uploadMessage');
 
             if (!title || !url || !date) {
                 message.textContent = 'Please complete all fields.';
+                message.style.color = '#ff6666';
                 return;
             }
 
             content.trailers.unshift({ title, platform, url, date });
             message.textContent = 'Trailer uploaded successfully!';
+            message.style.color = '#7cff7c';
             document.getElementById('trailerForm').reset();
             renderTrailers();
         }
