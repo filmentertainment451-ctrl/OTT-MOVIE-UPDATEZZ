@@ -1,231 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudioEdit - Photo & Video Editor</title>
-    <style>
-        :root {
-            --bg-color: #1e1e24;
-            --panel-color: #2a2a35;
-            --accent-color: #00adb5;
-            --text-color: #eeeeee;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Editor Pro</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
 
-        header {
-            background-color: var(--panel-color);
-            padding: 10px 20px;
-            text-align: center;
-            border-bottom: 2px solid #3a3a4a;
-        }
+body{
+    background:#121212;
+    color:white;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-        }
+header{
+    background:#000;
+    padding:15px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
 
-        .main-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
+.container{
+    display:flex;
+    height:90vh;
+}
 
-        /* Sidebar Controls */
-        .controls-sidebar {
-            width: 300px;
-            background-color: var(--panel-color);
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            border-right: 2px solid #3a3a4a;
-        }
+.sidebar{
+    width:230px;
+    background:#1f1f1f;
+    padding:15px;
+    overflow-y:auto;
+}
 
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+.sidebar h2{
+    margin-bottom:15px;
+}
 
-        label {
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
+.tool{
+    background:#333;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
 
-        input[type="range"] {
-            width: 100%;
-            accent-color: var(--accent-color);
-        }
+.tool:hover{
+    background:#ff4081;
+}
 
-        input[type="file"] {
-            display: none;
-        }
+.editor{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#222;
+}
 
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-align: center;
-            transition: background 0.2s;
-        }
+.canvas-box{
+    width:700px;
+    height:450px;
+    background:#fff;
+    border:3px dashed #999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#555;
+}
 
-        .btn:hover {
-            background-color: #008c95;
-        }
+.bottom-bar{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#000;
+    padding:10px;
+    text-align:center;
+}
 
-        /* Workspace / Preview Area */
-        .workspace {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #111115;
-            padding: 20px;
-            position: relative;
-        }
-
-        .preview-canvas {
-            max-width: 100%;
-            max-height: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: none;
-        }
-
-        .placeholder-text {
-            color: #666;
-            font-size: 1.2rem;
-        }
-    </style>
+button{
+    background:#ff4081;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    margin:5px;
+    cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>StudioEdit Pro</h1>
-    </header>
+<header>PHOTO EDITOR PRO</header>
 
-    <div class="main-container">
-        <div class="controls-sidebar">
-            <label for="file-upload" class="btn">Upload Image / Video</label>
-            <input type="file" id="file-upload" accept="image/*, video/*">
+<div class="container">
 
-            <hr style="border-color: #3a3a4a; width: 100%;">
+<div class="sidebar">
+<h2>Pro Tools</h2>
 
-            <h3>Filters & Adjustments</h3>
-            
-            <div class="control-group">
-                <label>Brightness</label>
-                <input type="range" id="brightness" min="0" max="200" value="100">
-            </div>
+<div class="tool">📁 Upload Image</div>
+<div class="tool">✂ Crop</div>
+<div class="tool">🪄 AI Enhance</div>
+<div class="tool">🎨 Filters</div>
+<div class="tool">💡 Brightness</div>
+<div class="tool">🌈 Contrast</div>
+<div class="tool">🎭 Saturation</div>
+<div class="tool">🌡 Temperature</div>
+<div class="tool">✨ Effects</div>
+<div class="tool">🖌 Brush</div>
+<div class="tool">🩹 Remove Object</div>
+<div class="tool">👤 Background Remover</div>
+<div class="tool">📝 Add Text</div>
+<div class="tool">😊 Stickers</div>
+<div class="tool">🖼 Frames</div>
+<div class="tool">↩ Undo</div>
+<div class="tool">↪ Redo</div>
 
-            <div class="control-group">
-                <label>Contrast</label>
-                <input type="range" id="contrast" min="0" max="200" value="100">
-            </div>
+</div>
 
-            <div class="control-group">
-                <label>Grayscale</label>
-                <input type="range" id="grayscale" min="0" max="100" value="0">
-            </div>
+<div class="editor">
+<div class="canvas-box">
+Upload your image here
+</div>
+</div>
 
-            <div class="control-group">
-                <label>Blur</label>
-                <input type="range" id="blur" min="0" max="10" value="0">
-            </div>
+</div>
 
-            <button class="btn" id="reset-btn" style="background-color: #e94560;">Reset Effects</button>
-        </div>
+<div class="bottom-bar">
+<button>Save</button>
+<button>Download</button>
+<button>Share</button>
+</div>
 
-        <div class="workspace">
-            <p class="placeholder-text" id="placeholder">Upload a photo or video to start editing</p>
-            <img id="image-preview" class="preview-canvas" alt="Preview">
-            <video id="video-preview" class="preview-canvas" controls loop muted></video>
-        </div>
-    </div>
-
-    <script>
-        const fileUpload = document.getElementById('file-upload');
-        const imagePreview = document.getElementById('image-preview');
-        const videoPreview = document.getElementById('video-preview');
-        const placeholder = document.getElementById('placeholder');
-
-        // Control Sliders
-        const brightness = document.getElementById('brightness');
-        const contrast = document.getElementById('contrast');
-        const grayscale = document.getElementById('grayscale');
-        const blur = document.getElementById('blur');
-        const resetBtn = document.getElementById('reset-btn');
-
-        let currentActiveElement = null;
-
-        // Handle File Uploads
-        fileUpload.addEventListener('change', function() {
-            const file = this.files[0];
-            if (!file) return;
-
-            const fileURL = URL.createObjectURL(file);
-            placeholder.style.display = 'none';
-
-            if (file.type.startsWith('image/')) {
-                videoPreview.style.display = 'none';
-                videoPreview.pause();
-                
-                imagePreview.src = fileURL;
-                imagePreview.style.display = 'block';
-                currentActiveElement = imagePreview;
-            } else if (file.type.startsWith('video/')) {
-                imagePreview.style.display = 'none';
-                
-                videoPreview.src = fileURL;
-                videoPreview.style.display = 'block';
-                videoPreview.play();
-                currentActiveElement = videoPreview;
-            }
-            applyFilters();
-        });
-
-        // Apply CSS Filters dynamically
-        function applyFilters() {
-            if (!currentActiveElement) return;
-            
-            const filterString = `
-                brightness(${brightness.value}%) 
-                contrast(${contrast.value}%) 
-                grayscale(${grayscale.value}%) 
-                blur(${blur.value}px)
-            `;
-            currentActiveElement.style.filter = filterString;
-        }
-
-        // Add event listeners to sliders
-        [brightness, contrast, grayscale, blur].forEach(slider => {
-            slider.addEventListener('input', applyFilters);
-        });
-
-        // Reset changes
-        resetBtn.addEventListener('click', () => {
-            brightness.value = 100;
-            contrast.value = 100;
-            grayscale.value = 0;
-            blur.value = 0;
-            applyFilters();
-        });
-    </script>
 </body>
 </html>
