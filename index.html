@@ -1,142 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo Editor Pro</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#121212;
-    color:white;
-}
-
-header{
-    background:#000;
-    padding:15px;
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-}
-
-.container{
-    display:flex;
-    height:90vh;
-}
-
-.sidebar{
-    width:230px;
-    background:#1f1f1f;
-    padding:15px;
-    overflow-y:auto;
-}
-
-.sidebar h2{
-    margin-bottom:15px;
-}
-
-.tool{
-    background:#333;
-    padding:12px;
-    margin-bottom:10px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.tool:hover{
-    background:#ff4081;
-}
-
-.editor{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#222;
-}
-
-.canvas-box{
-    width:700px;
-    height:450px;
-    background:#fff;
-    border:3px dashed #999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#555;
-}
-
-.bottom-bar{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    background:#000;
-    padding:10px;
-    text-align:center;
-}
-
-button{
-    background:#ff4081;
-    color:white;
-    border:none;
-    padding:10px 18px;
-    border-radius:8px;
-    margin:5px;
-    cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<header>PHOTO EDITOR PRO</header>
+<!-- Video Editor -->
 
 <div class="container">
 
-<div class="sidebar">
-<h2>Pro Tools</h2>
+    <!-- Left Tools -->
+    <div class="sidebar">
+        <h2>Video Tools</h2>
 
-<div class="tool">📁 Upload Image</div>
-<div class="tool">✂ Crop</div>
-<div class="tool">🪄 AI Enhance</div>
-<div class="tool">🎨 Filters</div>
-<div class="tool">💡 Brightness</div>
-<div class="tool">🌈 Contrast</div>
-<div class="tool">🎭 Saturation</div>
-<div class="tool">🌡 Temperature</div>
-<div class="tool">✨ Effects</div>
-<div class="tool">🖌 Brush</div>
-<div class="tool">🩹 Remove Object</div>
-<div class="tool">👤 Background Remover</div>
-<div class="tool">📝 Add Text</div>
-<div class="tool">😊 Stickers</div>
-<div class="tool">🖼 Frames</div>
-<div class="tool">↩ Undo</div>
-<div class="tool">↪ Redo</div>
+        <div class="tool">📂 Import Video</div>
+        <div class="tool">✂ Cut</div>
+        <div class="tool">🪄 Split</div>
+        <div class="tool">🎬 Transition</div>
+        <div class="tool">🎨 Filters</div>
+        <div class="tool">✨ Effects</div>
+        <div class="tool">📝 Text</div>
+        <div class="tool">😊 Stickers</div>
+        <div class="tool">🎵 Music</div>
+        <div class="tool">🎙 Voice Over</div>
+        <div class="tool">🔊 Audio</div>
+        <div class="tool">⚡ Speed</div>
+        <div class="tool">🎥 Animation</div>
+        <div class="tool">🌈 Color</div>
+        <div class="tool">📐 Crop</div>
+        <div class="tool">🔄 Rotate</div>
+        <div class="tool">🔍 Zoom</div>
+        <div class="tool">💚 Chroma Key</div>
+        <div class="tool">🧹 Remove Background</div>
+        <div class="tool">🤖 AI Enhance</div>
+        <div class="tool">📺 Auto Captions</div>
+        <div class="tool">📤 Export</div>
+    </div>
+
+    <!-- Preview -->
+    <div class="editor">
+
+        <div style="width:900px;background:#111;padding:20px;border-radius:10px;">
+
+            <video width="100%" height="450" controls>
+                <source src="sample.mp4" type="video/mp4">
+            </video>
+
+            <br><br>
+
+            <!-- Timeline -->
+            <input type="range" min="0" max="100" value="0" style="width:100%;">
+
+            <br><br>
+
+            <button>▶ Play</button>
+            <button>⏸ Pause</button>
+            <button>✂ Split</button>
+            <button>🗑 Delete</button>
+            <button>⏪ Undo</button>
+            <button>⏩ Redo</button>
+
+        </div>
+
+    </div>
 
 </div>
-
-<div class="editor">
-<div class="canvas-box">
-Upload your image here
-</div>
-</div>
-
-</div>
-
-<div class="bottom-bar">
-<button>Save</button>
-<button>Download</button>
-<button>Share</button>
-</div>
-
-</body>
-</html>
