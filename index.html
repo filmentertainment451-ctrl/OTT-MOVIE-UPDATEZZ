@@ -1,273 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoGuard Pest Control | Professional & Safe Solutions</title>
-    <style>
-        /* Basic Reset & Styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoGuard Pest Control</title>
 
-        body {
-            color: #333;
-            line-height: 1.6;
-            background-color: #f9f9f9;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-        /* Header & Navigation */
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+body{
+background:#f5f7fa;
+color:#333;
+line-height:1.6;
+}
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+header{
+background:#0b6b3a;
+color:#fff;
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2e7d32; /* Eco Green */
-        }
+.logo{
+font-size:28px;
+font-weight:bold;
+}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
+nav a{
+color:#fff;
+text-decoration:none;
+margin-left:20px;
+font-weight:bold;
+}
 
-        .nav-links li {
-            margin-left: 20px;
-        }
+.hero{
+height:90vh;
+background:url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1500&q=80") center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+.hero-content{
+background:rgba(0,0,0,.6);
+padding:40px;
+border-radius:15px;
+}
 
-        .nav-links a:hover {
-            color: #2e7d32;
-        }
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 70vh;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: 70px;
-        }
+.hero p{
+font-size:20px;
+margin-bottom:25px;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+.btn{
+display:inline-block;
+background:#28a745;
+color:white;
+padding:14px 28px;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
+section{
+padding:70px 8%;
+}
 
-        .btn {
-            display: inline-block;
-            background-color: #2e7d32;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background 0.3s;
-            border: none;
-            cursor: pointer;
-        }
+h2{
+text-align:center;
+margin-bottom:40px;
+color:#0b6b3a;
+}
 
-        .btn:hover {
-            background-color: #1b5e20;
-        }
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
 
-        /* Sections General */
-        section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+transition:.3s;
+}
 
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: #2e7d32;
-        }
+.card:hover{
+transform:translateY(-8px);
+}
 
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+.card h3{
+margin-bottom:10px;
+color:#0b6b3a;
+}
 
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            text-align: center;
-            border-top: 4px solid #2e7d32;
-        }
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+align-items:center;
+}
 
-        .service-card h3 {
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
+.about img{
+width:100%;
+border-radius:12px;
+}
 
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 40px;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+.contact{
+background:#0b6b3a;
+color:white;
+text-align:center;
+}
 
-        .contact-info h3 {
-            margin-bottom: 20px;
-            color: #2e7d32;
-        }
+.contact p{
+margin:10px 0;
+}
 
-        .contact-info p {
-            margin-bottom: 10px;
-        }
+footer{
+background:#083b20;
+color:white;
+text-align:center;
+padding:20px;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+@media(max-width:768px){
+.about{
+grid-template-columns:1fr;
+}
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
+.hero h1{
+font-size:34px;
+}
 
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+nav{
+display:none;
+}
+}
+</style>
 
-        /* Footer */
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-    </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">EcoGuard Pest Control</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+<header>
+<div class="logo">EcoGuard Pest Control</div>
 
-    <section id="home" class="hero">
-        <h1>Say Goodbye to Unwanted Pests</h1>
-        <p>Safe, effective, and eco-friendly pest control solutions for your home and business.</p>
-        <a href="#contact" class="btn">Book a Free Inspection</a>
-    </section>
+<nav>
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
 
-    <section id="services">
-        <h2 class="section-title">Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Residential Pest Control</h3>
-                <p>Protect your home and family from ants, spiders, rodents, and other common household pests.</p>
-            </div>
-            <div class="service-card">
-                <h3>Commercial Pest Control</h3>
-                <p>Tailored pest management programs to keep your business compliant, safe, and pest-free.</p>
-            </div>
-            <div class="service-card">
-                <h3>Termite Protection</h3>
-                <p>Advanced detection and treatment barriers to safeguard your property against costly structural damage.</p>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="hero-content">
+<h1>Professional Pest Control Services</h1>
+<p>Safe • Fast • Affordable Solutions for Homes & Businesses</p>
+<a href="https://wa.me/919876543210" class="btn">Book Inspection</a>
+</div>
+</section>
 
-    <section id="about" style="background-color: #f0f4f1; max-width: 100%;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <h2 class="section-title">Why Choose Us?</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px;">
-                With over 10 years of experience, EcoGuard Pest Control is dedicated to providing peace of mind through environmentally responsible pest management. Our certified technicians use cutting-edge technology and pet-safe products to ensure your property remains clear of pests.
-            </p>
-        </div>
-    </section>
+<section id="services">
+<h2>Our Services</h2>
 
-    <section id="contact">
-        <h2 class="section-title">Contact Us Today</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <p><strong>Phone:</strong> (555) 123-4567</p>
-                <p><strong>Email:</strong> info@ecoguardpest.com</p>
-                <p><strong>Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
-                <p><strong>Emergency Service:</strong> 24/7 Available</p>
-            </div>
-            <div class="contact-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">How can we help you?</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<div class="services">
 
-    <footer>
-        <p>&copy; 2026 EcoGuard Pest Control. All rights reserved.</p>
-    </footer>
+<div class="card">
+<h3>🐜 Termite Control</h3>
+<p>Complete anti-termite treatment for homes and offices.</p>
+</div>
+
+<div class="card">
+<h3>🪳 Cockroach Control</h3>
+<p>Long-lasting cockroach treatment using safe chemicals.</p>
+</div>
+
+<div class="card">
+<h3>🐀 Rodent Control</h3>
+<p>Rat and mouse removal with preventive solutions.</p>
+</div>
+
+<div class="card">
+<h3>🦟 Mosquito Control</h3>
+<p>Protect your family from mosquitoes and harmful insects.</p>
+</div>
+
+</div>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=80">
+
+<div>
+<h3>Trusted Pest Control Experts</h3>
+<p>
+We provide eco-friendly pest control services with certified professionals.
+Our treatments are safe for children and pets while delivering effective
+long-term pest protection.
+</p>
+
+<br>
+
+<p>
+✔ Residential Services<br>
+✔ Commercial Services<br>
+✔ Same Day Service<br>
+✔ 100% Customer Satisfaction
+</p>
+
+</div>
+
+</div>
+</section>
+
+<section class="contact" id="contact">
+
+<h2 style="color:white;">Contact Us</h2>
+
+<p>📍 Your City, India</p>
+
+<p>📞 +91 98765 43210</p>
+
+<p>✉ info@ecoguard.com</p>
+
+<a class="btn" href="https://wa.me/919876543210">WhatsApp Now</a>
+
+</section>
+
+<footer>
+© 2026 EcoGuard Pest Control. All Rights Reserved.
+</footer>
 
 </body>
 </html>
