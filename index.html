@@ -26,6 +26,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #e50914;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo {
@@ -34,12 +36,18 @@
             color: #e50914;
         }
 
+        nav {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         nav a {
             color: #fff;
             text-decoration: none;
-            margin-left: 20px;
             font-weight: 500;
             transition: color 0.3s;
+            font-size: 14px;
         }
 
         nav a:hover {
@@ -94,10 +102,9 @@
             margin-bottom: 10px;
         }
 
-        /* Badges */
+        /* Platform Badges */
         .badge {
             display: inline-block;
-            background-color: #e50914;
             color: #fff;
             padding: 4px 8px;
             font-size: 12px;
@@ -106,8 +113,13 @@
             font-weight: bold;
         }
 
+        .badge.netflix { background-color: #e50914; }
         .badge.prime { background-color: #00a8e1; }
-        .badge.hotstar { background-color: #113755; }
+        .badge.jiohotstar { background-color: #113755; }
+        .badge.sonyliv { background-color: #f26522; }
+        .badge.sunnxt { background-color: #ff9900; }
+        .badge.manoramamax { background-color: #800080; }
+        .badge.zee5 { background-color: #8224e3; }
 
         .card-title {
             font-size: 20px;
@@ -153,52 +165,24 @@
             <a href="#">Home</a>
             <a href="#">Netflix</a>
             <a href="#">Prime Video</a>
-            <a href="#">Disney+</a>
+            <a href="#">JioHotstar</a>
+            <a href="#">SonyLIV</a>
+            <a href="#">SunNXT</a>
+            <a href="#">ManoramaMAX</a>
+            <a href="#">ZEE5</a>
         </nav>
     </header>
 
     <div class="container">
-        <h2>Latest OTT Releases & Details</h2>
+        <h2>Latest Regional & Global OTT Releases</h2>
 
         <div class="movie-grid">
 
             <div class="card">
-                <img src="https://via.placeholder.com/300x400?text=Movie+Poster+1" alt="Movie Poster">
+                <img src="https://via.placeholder.com/300x400?text=JioHotstar+Poster" alt="Movie Poster">
                 <div class="card-content">
                     <div class="platform-header">
-                        <span class="badge">Netflix</span>
-                    </div>
-                    <h3 class="card-title">Cyber City 2099</h3>
-                    <p class="details"><span>Release Date:</span> October 24, 2026</p>
-                    <p class="details"><span>Runtime:</span> 2h 15m</p>
-                    <p class="details"><span>Genre:</span> Sci-Fi, Action</p>
-                    <p class="details"><span>Director:</span> Alex Garland</p>
-                    <p class="details"><span>Cast:</span> John Doe, Jane Smith</p>
-                    <p class="synopsis">A rogue detective uncovers a futuristic conspiracy in a sprawling metropolis.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://via.placeholder.com/300x400?text=Movie+Poster+2" alt="Movie Poster">
-                <div class="card-content">
-                    <div class="platform-header">
-                        <span class="badge prime">Prime Video</span>
-                    </div>
-                    <h3 class="card-title">Shadows in the Woods</h3>
-                    <p class="details"><span>Release Date:</span> November 02, 2026</p>
-                    <p class="details"><span>Runtime:</span> 1h 48m</p>
-                    <p class="details"><span>Genre:</span> Thriller, Mystery</p>
-                    <p class="details"><span>Director:</span> Mike Flanagan</p>
-                    <p class="details"><span>Cast:</span> Sam Claflin, Mia Goth</p>
-                    <p class="synopsis">A group of friends goes missing during a weekend camping trip with unexpected twists.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://via.placeholder.com/300x400?text=Movie+Poster+3" alt="Movie Poster">
-                <div class="card-content">
-                    <div class="platform-header">
-                        <span class="badge hotstar">Disney+</span>
+                        <span class="badge jiohotstar">JioHotstar</span>
                     </div>
                     <h3 class="card-title">Kingdom of Legends</h3>
                     <p class="details"><span>Release Date:</span> Stream Now</p>
@@ -207,6 +191,86 @@
                     <p class="details"><span>Director:</span> Peter Jackson</p>
                     <p class="details"><span>Cast:</span> Tom Holland, Zendaya</p>
                     <p class="synopsis">An epic journey of a young hero destined to unite fractured kingdoms.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=SonyLIV+Poster" alt="Movie Poster">
+                <div class="card-content">
+                    <div class="platform-header">
+                        <span class="badge sonyliv">SonyLIV</span>
+                    </div>
+                    <h3 class="card-title">The Investigative Files</h3>
+                    <p class="details"><span>Release Date:</span> October 18, 2026</p>
+                    <p class="details"><span>Runtime:</span> 2h 10m</p>
+                    <p class="details"><span>Genre:</span> Crime, Thriller</p>
+                    <p class="details"><span>Director:</span> Jeethu Joseph</p>
+                    <p class="details"><span>Cast:</span> Mohanlal, Meena</p>
+                    <p class="synopsis">A gripping crime mystery following a detective as he unravels a high-profile case.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=SunNXT+Poster" alt="Movie Poster">
+                <div class="card-content">
+                    <div class="platform-header">
+                        <span class="badge sunnxt">SunNXT</span>
+                    </div>
+                    <h3 class="card-title">Veera Yoddha</h3>
+                    <p class="details"><span>Release Date:</span> November 05, 2026</p>
+                    <p class="details"><span>Runtime:</span> 2h 45m</p>
+                    <p class="details"><span>Genre:</span> Action, Drama</p>
+                    <p class="details"><span>Director:</span> Nelson Dilipkumar</p>
+                    <p class="details"><span>Cast:</span> Rajinikanth, Shiva Rajkumar</p>
+                    <p class="synopsis">An action-packed drama featuring intense battle sequences and emotional turmoil.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=ManoramaMAX+Poster" alt="Movie Poster">
+                <div class="card-content">
+                    <div class="platform-header">
+                        <span class="badge manoramamax">ManoramaMAX</span>
+                    </div>
+                    <h3 class="card-title">Nadan Kadhakal</h3>
+                    <p class="details"><span>Release Date:</span> Stream Now</p>
+                    <p class="details"><span>Runtime:</span> 1h 55m</p>
+                    <p class="details"><span>Genre:</span> Comedy, Family</p>
+                    <p class="details"><span>Director:</span> Basil Joseph</p>
+                    <p class="details"><span>Cast:</span> Tovino Thomas, Vineeth Sreenivasan</p>
+                    <p class="synopsis">A lighthearted family tale exploring village life, friendships, and humor.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=ZEE5+Poster" alt="Movie Poster">
+                <div class="card-content">
+                    <div class="platform-header">
+                        <span class="badge zee5">ZEE5</span>
+                    </div>
+                    <h3 class="card-title">Silent Echoes</h3>
+                    <p class="details"><span>Release Date:</span> November 12, 2026</p>
+                    <p class="details"><span>Runtime:</span> 2h 05m</p>
+                    <p class="details"><span>Genre:</span> Psychological Thriller</p>
+                    <p class="details"><span>Director:</span> Anurag Kashyap</p>
+                    <p class="details"><span>Cast:</span> Nawazuddin Siddiqui, Radhika Apte</p>
+                    <p class="synopsis">A psychological drama exploring dark secrets buried deep within a quiet town.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=Netflix+Poster" alt="Movie Poster">
+                <div class="card-content">
+                    <div class="platform-header">
+                        <span class="badge netflix">Netflix</span>
+                    </div>
+                    <h3 class="card-title">Cyber City 2099</h3>
+                    <p class="details"><span>Release Date:</span> October 24, 2026</p>
+                    <p class="details"><span>Runtime:</span> 2h 15m</p>
+                    <p class="details"><span>Genre:</span> Sci-Fi, Action</p>
+                    <p class="details"><span>Director:</span> Alex Garland</p>
+                    <p class="details"><span>Cast:</span> John Doe, Jane Smith</p>
+                    <p class="synopsis">A rogue detective uncovers a futuristic conspiracy in a sprawling metropolis.</p>
                 </div>
             </div>
 
