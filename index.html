@@ -18,7 +18,7 @@
             line-height: 1.6;
         }
 
-        /* Header */
+        /* Header Navigation */
         header {
             background-color: #000000;
             padding: 20px 50px;
@@ -46,7 +46,7 @@
             color: #e50914;
         }
 
-        /* Main Container */
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -90,12 +90,11 @@
             padding: 20px;
         }
 
-        .card-title {
-            font-size: 20px;
+        .platform-header {
             margin-bottom: 10px;
-            color: #fff;
         }
 
+        /* Badges */
         .badge {
             display: inline-block;
             background-color: #e50914;
@@ -103,23 +102,23 @@
             padding: 4px 8px;
             font-size: 12px;
             border-radius: 4px;
-            margin-bottom: 10px;
             text-transform: uppercase;
             font-weight: bold;
         }
 
-        .badge.prime {
-            background-color: #00a8e1;
-        }
+        .badge.prime { background-color: #00a8e1; }
+        .badge.hotstar { background-color: #113755; }
 
-        .badge.hotstar {
-            background-color: #113755;
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #fff;
         }
 
         .details {
-            font-size: 14px;
+            font-size: 13px;
             color: #b3b3b3;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .details span {
@@ -130,7 +129,9 @@
         .synopsis {
             font-size: 13px;
             color: #cccccc;
-            margin-top: 10px;
+            margin-top: 12px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
         }
 
         /* Footer */
@@ -157,18 +158,22 @@
     </header>
 
     <div class="container">
-        <h2>Latest OTT Releases & Updates</h2>
+        <h2>Latest OTT Releases & Details</h2>
 
         <div class="movie-grid">
 
             <div class="card">
                 <img src="https://via.placeholder.com/300x400?text=Movie+Poster+1" alt="Movie Poster">
                 <div class="card-content">
-                    <span class="badge">Netflix</span>
+                    <div class="platform-header">
+                        <span class="badge">Netflix</span>
+                    </div>
                     <h3 class="card-title">Cyber City 2099</h3>
                     <p class="details"><span>Release Date:</span> October 24, 2026</p>
+                    <p class="details"><span>Runtime:</span> 2h 15m</p>
                     <p class="details"><span>Genre:</span> Sci-Fi, Action</p>
-                    <p class="details"><span>Language:</span> English, Hindi</p>
+                    <p class="details"><span>Director:</span> Alex Garland</p>
+                    <p class="details"><span>Cast:</span> John Doe, Jane Smith</p>
                     <p class="synopsis">A rogue detective uncovers a futuristic conspiracy in a sprawling metropolis.</p>
                 </div>
             </div>
@@ -176,11 +181,15 @@
             <div class="card">
                 <img src="https://via.placeholder.com/300x400?text=Movie+Poster+2" alt="Movie Poster">
                 <div class="card-content">
-                    <span class="badge prime">Prime Video</span>
+                    <div class="platform-header">
+                        <span class="badge prime">Prime Video</span>
+                    </div>
                     <h3 class="card-title">Shadows in the Woods</h3>
                     <p class="details"><span>Release Date:</span> November 02, 2026</p>
+                    <p class="details"><span>Runtime:</span> 1h 48m</p>
                     <p class="details"><span>Genre:</span> Thriller, Mystery</p>
-                    <p class="details"><span>Language:</span> English, Spanish</p>
+                    <p class="details"><span>Director:</span> Mike Flanagan</p>
+                    <p class="details"><span>Cast:</span> Sam Claflin, Mia Goth</p>
                     <p class="synopsis">A group of friends goes missing during a weekend camping trip with unexpected twists.</p>
                 </div>
             </div>
@@ -188,11 +197,15 @@
             <div class="card">
                 <img src="https://via.placeholder.com/300x400?text=Movie+Poster+3" alt="Movie Poster">
                 <div class="card-content">
-                    <span class="badge hotstar">Disney+</span>
+                    <div class="platform-header">
+                        <span class="badge hotstar">Disney+</span>
+                    </div>
                     <h3 class="card-title">Kingdom of Legends</h3>
                     <p class="details"><span>Release Date:</span> Stream Now</p>
+                    <p class="details"><span>Runtime:</span> 2h 30m</p>
                     <p class="details"><span>Genre:</span> Fantasy, Adventure</p>
-                    <p class="details"><span>Language:</span> Multi-Audio</p>
+                    <p class="details"><span>Director:</span> Peter Jackson</p>
+                    <p class="details"><span>Cast:</span> Tom Holland, Zendaya</p>
                     <p class="synopsis">An epic journey of a young hero destined to unite fractured kingdoms.</p>
                 </div>
             </div>
