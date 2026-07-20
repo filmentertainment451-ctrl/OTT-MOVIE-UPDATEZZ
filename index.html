@@ -1,257 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoGuard Pest Control</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI Background Remover</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/dist/index.js"></script>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-body{
-background:#f5f7fa;
-color:#333;
-line-height:1.6;
-}
+    body {
+      background-color: #f4f7f6;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-header{
-background:#0b6b3a;
-color:#fff;
-padding:15px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-}
+    .container {
+      background: #ffffff;
+      width: 100%;
+      max-width: 800px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-}
+    h1 {
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
 
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:20px;
-font-weight:bold;
-}
+    p {
+      color: #666;
+      margin-bottom: 25px;
+    }
 
-.hero{
-height:90vh;
-background:url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1500&q=80") center/cover;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:white;
-}
+    /* Drop Zone Styling */
+    .drop-zone {
+      border: 2px dashed #3498db;
+      border-radius: 8px;
+      padding: 40px 20px;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s;
+      margin-bottom: 25px;
+    }
 
-.hero-content{
-background:rgba(0,0,0,.6);
-padding:40px;
-border-radius:15px;
-}
+    .drop-zone:hover {
+      background: #ebf5fb;
+      border-color: #2980b9;
+    }
 
-.hero h1{
-font-size:48px;
-margin-bottom:15px;
-}
+    .drop-zone input[type="file"] {
+      display: none;
+    }
 
-.hero p{
-font-size:20px;
-margin-bottom:25px;
-}
+    .drop-zone p {
+      margin: 0;
+      font-weight: 600;
+      color: #3498db;
+    }
 
-.btn{
-display:inline-block;
-background:#28a745;
-color:white;
-padding:14px 28px;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
-}
+    /* Status & Loading */
+    .status {
+      font-weight: 600;
+      color: #e67e22;
+      margin-bottom: 15px;
+      display: none;
+    }
 
-section{
-padding:70px 8%;
-}
+    /* Preview Section */
+    .preview-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
 
-h2{
-text-align:center;
-margin-bottom:40px;
-color:#0b6b3a;
-}
+    .image-card {
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
+      background: #fafafa;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    .image-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #555;
+    }
 
-.card{
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-text-align:center;
-transition:.3s;
-}
+    /* Transparent Grid for Output Preview */
+    .transparent-bg {
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
+                        linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #ccc 75%), 
+                        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
 
-.card:hover{
-transform:translateY(-8px);
-}
+    .image-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
 
-.card h3{
-margin-bottom:10px;
-color:#0b6b3a;
-}
+    /* Buttons */
+    .btn {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-align-items:center;
-}
+    .btn:hover {
+      background-color: #27ae60;
+    }
 
-.about img{
-width:100%;
-border-radius:12px;
-}
-
-.contact{
-background:#0b6b3a;
-color:white;
-text-align:center;
-}
-
-.contact p{
-margin:10px 0;
-}
-
-footer{
-background:#083b20;
-color:white;
-text-align:center;
-padding:20px;
-}
-
-@media(max-width:768px){
-.about{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:34px;
-}
-
-nav{
-display:none;
-}
-}
-</style>
-
+    .btn:disabled {
+      background-color: #bdc3c7;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-<div class="logo">EcoGuard Pest Control</div>
+  <div class="container">
+    <h1>AI Background Remover</h1>
+    <p>Upload an image to automatically remove its background locally in your browser.</p>
 
-<nav>
-<a href="#">Home</a>
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click();">
+      <p>Click or Drag & Drop an Image Here</p>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
 
-<section class="hero">
-<div class="hero-content">
-<h1>Professional Pest Control Services</h1>
-<p>Safe • Fast • Affordable Solutions for Homes & Businesses</p>
-<a href="https://wa.me/919876543210" class="btn">Book Inspection</a>
-</div>
-</section>
+    <div class="status" id="statusMessage">Processing image... Please wait.</div>
 
-<section id="services">
-<h2>Our Services</h2>
+    <div class="preview-container" id="previewArea" style="display: none;">
+      <div class="image-card">
+        <h3>Original</h3>
+        <img id="originalImg" src="" alt="Original Image">
+      </div>
+      <div class="image-card">
+        <h3>Background Removed</h3>
+        <img id="processedImg" class="transparent-bg" src="" alt="Result Image">
+      </div>
+    </div>
 
-<div class="services">
+    <a id="downloadBtn" class="btn" style="display: none;" download="removed-background.png">Download PNG</a>
+  </div>
 
-<div class="card">
-<h3>🐜 Termite Control</h3>
-<p>Complete anti-termite treatment for homes and offices.</p>
-</div>
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const statusMessage = document.getElementById('statusMessage');
+    const previewArea = document.getElementById('previewArea');
+    const originalImg = document.getElementById('originalImg');
+    const processedImg = document.getElementById('processedImg');
+    const downloadBtn = document.getElementById('downloadBtn');
 
-<div class="card">
-<h3>🪳 Cockroach Control</h3>
-<p>Long-lasting cockroach treatment using safe chemicals.</p>
-</div>
+    // Handle File Selection
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) processImage(file);
+    });
 
-<div class="card">
-<h3>🐀 Rodent Control</h3>
-<p>Rat and mouse removal with preventive solutions.</p>
-</div>
+    // Drag and Drop support
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.style.background = '#ebf5fb';
+    });
 
-<div class="card">
-<h3>🦟 Mosquito Control</h3>
-<p>Protect your family from mosquitoes and harmful insects.</p>
-</div>
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.style.background = '#f8fafc';
+    });
 
-</div>
-</section>
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.style.background = '#f8fafc';
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        processImage(file);
+      }
+    });
 
-<section id="about">
-<h2>About Us</h2>
+    // Process Background Removal
+    async function processImage(file) {
+      // Show local image preview
+      const originalUrl = URL.createObjectURL(file);
+      originalImg.src = originalUrl;
 
-<div class="about">
+      // Update UI state
+      previewArea.style.display = 'none';
+      downloadBtn.style.display = 'none';
+      statusMessage.style.display = 'block';
+      statusMessage.textContent = 'Loading AI Model & Processing Image...';
 
-<img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=80">
+      try {
+        // Remove background using @imgly/background-removal
+        const blob = await imglyRemoveBackground(file, {
+          progress: (key, current, total) => {
+            // Optional: Track progress
+            const percent = Math.round((current / total) * 100);
+            if (!isNaN(percent)) {
+              statusMessage.textContent = `Processing: ${percent}%`;
+            }
+          }
+        });
 
-<div>
-<h3>Trusted Pest Control Experts</h3>
-<p>
-We provide eco-friendly pest control services with certified professionals.
-Our treatments are safe for children and pets while delivering effective
-long-term pest protection.
-</p>
+        // Generate URL for the output blob
+        const resultUrl = URL.createObjectURL(blob);
+        
+        // Update output elements
+        processedImg.src = resultUrl;
+        downloadBtn.href = resultUrl;
 
-<br>
+        // Display results
+        statusMessage.style.display = 'none';
+        previewArea.style.display = 'flex';
+        downloadBtn.style.display = 'inline-block';
 
-<p>
-✔ Residential Services<br>
-✔ Commercial Services<br>
-✔ Same Day Service<br>
-✔ 100% Customer Satisfaction
-</p>
-
-</div>
-
-</div>
-</section>
-
-<section class="contact" id="contact">
-
-<h2 style="color:white;">Contact Us</h2>
-
-<p>📍 Your City, India</p>
-
-<p>📞 +91 98765 43210</p>
-
-<p>✉ info@ecoguard.com</p>
-
-<a class="btn" href="https://wa.me/919876543210">WhatsApp Now</a>
-
-</section>
-
-<footer>
-© 2026 EcoGuard Pest Control. All Rights Reserved.
-</footer>
-
+      } catch (error) {
+        console.error(error);
+        statusMessage.style.color = '#e74c3c';
+        statusMessage.textContent = 'Error removing background. Please try a different image.';
+      }
+    }
+  </script>
 </body>
 </html>
