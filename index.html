@@ -3,289 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus & Unwind Dashboard</title>
+    <title>OTT Movie Updates</title>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
+            background-color: #141414;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
+        /* Header */
         header {
-            margin-bottom: 2rem;
-            text-align: center;
+            background-color: #000000;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e50914;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--accent);
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e50914;
         }
 
-        .dashboard {
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e50914;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-left: 4px solid #e50914;
+            padding-left: 10px;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
+        /* Movie Card */
         .card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
         }
 
-        .card h2 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            border-bottom: 1px solid #334155;
-            padding-bottom: 0.5rem;
+        .card:hover {
+            transform: translateY(-5px);
         }
 
-        /* Timer Styles */
-        .timer-display {
-            font-size: 3.5rem;
+        .card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e50914;
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
             font-weight: bold;
+        }
+
+        .badge.prime {
+            background-color: #00a8e1;
+        }
+
+        .badge.hotstar {
+            background-color: #113755;
+        }
+
+        .details {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-bottom: 8px;
+        }
+
+        .details span {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .synopsis {
+            font-size: 13px;
+            color: #cccccc;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
             text-align: center;
-            margin: 1rem 0;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        button {
-            background-color: var(--accent);
-            color: var(--bg-color);
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        /* Ambient Noise Styles */
-        .noise-control {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        /* Todo List Styles */
-        .todo-input-group {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 0.6rem;
-            border-radius: 6px;
-            border: 1px solid #334155;
-            background-color: #0f172a;
-            color: var(--text-main);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #334155;
-        }
-
-        li.completed span {
-            text-decoration: line-through;
-            color: var(--text-muted);
-        }
-
-        .delete-btn {
-            background: none;
-            color: #ef4444;
-            padding: 2px 6px;
+            padding: 20px;
+            background-color: #000000;
+            color: #777;
+            margin-top: 50px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Focus & Unwind</h1>
-        <p style="color: var(--text-muted);">Your minimal productivity hub</p>
+        <div class="logo">OTT Updatez</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Netflix</a>
+            <a href="#">Prime Video</a>
+            <a href="#">Disney+</a>
+        </nav>
     </header>
 
-    <main class="dashboard">
-        <section class="card">
-            <h2>Focus Timer</h2>
-            <div class="timer-display" id="timer">25:00</div>
-            <div class="button-group">
-                <button id="start-btn">Start</button>
-                <button id="pause-btn">Pause</button>
-                <button id="reset-btn">Reset</button>
+    <div class="container">
+        <h2>Latest OTT Releases & Updates</h2>
+
+        <div class="movie-grid">
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=Movie+Poster+1" alt="Movie Poster">
+                <div class="card-content">
+                    <span class="badge">Netflix</span>
+                    <h3 class="card-title">Cyber City 2099</h3>
+                    <p class="details"><span>Release Date:</span> October 24, 2026</p>
+                    <p class="details"><span>Genre:</span> Sci-Fi, Action</p>
+                    <p class="details"><span>Language:</span> English, Hindi</p>
+                    <p class="synopsis">A rogue detective uncovers a futuristic conspiracy in a sprawling metropolis.</p>
+                </div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>Ambient Sounds</h2>
-            <div class="noise-control">
-                <span>White Noise</span>
-                <button id="white-noise-btn">Toggle</button>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=Movie+Poster+2" alt="Movie Poster">
+                <div class="card-content">
+                    <span class="badge prime">Prime Video</span>
+                    <h3 class="card-title">Shadows in the Woods</h3>
+                    <p class="details"><span>Release Date:</span> November 02, 2026</p>
+                    <p class="details"><span>Genre:</span> Thriller, Mystery</p>
+                    <p class="details"><span>Language:</span> English, Spanish</p>
+                    <p class="synopsis">A group of friends goes missing during a weekend camping trip with unexpected twists.</p>
+                </div>
             </div>
-            <div class="noise-control">
-                <span>Pink Noise (Relaxing)</span>
-                <button id="pink-noise-btn">Toggle</button>
+
+            <div class="card">
+                <img src="https://via.placeholder.com/300x400?text=Movie+Poster+3" alt="Movie Poster">
+                <div class="card-content">
+                    <span class="badge hotstar">Disney+</span>
+                    <h3 class="card-title">Kingdom of Legends</h3>
+                    <p class="details"><span>Release Date:</span> Stream Now</p>
+                    <p class="details"><span>Genre:</span> Fantasy, Adventure</p>
+                    <p class="details"><span>Language:</span> Multi-Audio</p>
+                    <p class="synopsis">An epic journey of a young hero destined to unite fractured kingdoms.</p>
+                </div>
             </div>
-        </section>
 
-        <section class="card">
-            <h2>Today's Top 3</h2>
-            <div class="todo-input-group">
-                <input type="text" id="task-input" placeholder="Add a crucial task...">
-                <button id="add-task-btn">Add</button>
-            </div>
-            <ul id="task-list"></ul>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <script>
-        // --- TIMER LOGIC ---
-        let timeLeft = 25 * 60;
-        let timerId = null;
+    <footer>
+        <p>&copy; 2026 OTT Updatez. All rights reserved.</p>
+    </footer>
 
-        const timerDisplay = document.getElementById('timer');
-        const startBtn = document.getElementById('start-btn');
-        const pauseBtn = document.getElementById('pause-btn');
-        const resetBtn = document.getElementById('reset-btn');
-
-        function updateTimerDisplay() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-
-        startBtn.addEventListener('click', () => {
-            if (timerId !== null) return;
-            timerId = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    updateTimerDisplay();
-                } else {
-                    clearInterval(timerId);
-                    timerId = null;
-                    alert('Time for a break!');
-                }
-            }, 1000);
-        });
-
-        pauseBtn.addEventListener('click', () => {
-            clearInterval(timerId);
-            timerId = null;
-        });
-
-        resetBtn.addEventListener('click', () => {
-            clearInterval(timerId);
-            timerId = null;
-            timeLeft = 25 * 60;
-            updateTimerDisplay();
-        });
-
-        // --- AMBIENT NOISE LOGIC (Web Audio API) ---
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        let whiteNoiseNode = null;
-        let pinkNoiseNode = null;
-
-        function createWhiteNoise() {
-            const bufferSize = audioCtx.sampleRate * 2;
-            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-            const output = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                output[i] = Math.random() * 2 - 1;
-            }
-            const whiteNoise = audioCtx.createBufferSource();
-            whiteNoise.buffer = buffer;
-            whiteNoise.loop = true;
-            
-            // Lower volume for comfort
-            const gainNode = audioCtx.createGain();
-            gainNode.gain.value = 0.05; 
-            
-            whiteNoise.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            return whiteNoise;
-        }
-
-        document.getElementById('white-noise-btn').addEventListener('click', () => {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            
-            if (whiteNoiseNode) {
-                whiteNoiseNode.stop();
-                whiteNoiseNode = null;
-            } else {
-                whiteNoiseNode = createWhiteNoise();
-                whiteNoiseNode.start();
-            }
-        });
-
-        // --- TODO LIST LOGIC ---
-        const taskInput = document.getElementById('task-input');
-        const addTaskBtn = document.getElementById('add-task-btn');
-        const taskList = document.getElementById('task-list');
-
-        addTaskBtn.addEventListener('click', () => {
-            const text = taskInput.value.trim();
-            if (!text) return;
-
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <span>${text}</span>
-                <button class="delete-btn">✕</button>
-            `;
-
-            li.querySelector('span').addEventListener('click', () => {
-                li.classList.toggle('completed');
-            });
-
-            li.querySelector('.delete-btn').addEventListener('click', () => {
-                li.remove();
-            });
-
-            taskList.appendChild(li);
-            taskInput.value = '';
-        });
-    </script>
 </body>
 </html>
